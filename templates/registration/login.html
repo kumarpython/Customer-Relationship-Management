@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<center>
+    <img src="{% static 'images/0.jpg' %}" alt="crm" style="width:200px;height:200px;"/>
+
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-dark">Login</button>
+    </form>
+    <hr/>
+    <a href="{% url 'password-reset' %}">Forgot Password?</a>
+</center>
+{% endblock content %}

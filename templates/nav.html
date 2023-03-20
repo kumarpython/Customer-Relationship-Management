@@ -1,0 +1,40 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg sticky-top bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">CRM</a>
+    <img src="{% static 'images/0.jpg' %}" alt="crm" style="width:75px;height:75px;"/>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Leads</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'leads:lead-list' %}">List</a></li>
+            <li><a class="dropdown-item" href="{% url 'leads:lead-create' %}">Create</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Agents</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'agents:agent-list' %}">List</a></li>
+            <li><a class="dropdown-item" href="{% url 'agents:agent-create' %}">Create</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item"><a class="btn btn-sm btn-success" href="#">Welcome {{ request.user.username }}</a></li>
+          <li class="nav-item"><a class="btn btn-outline-dark" href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li class="nav-item"><a class="btn btn-sm btn-success" href="{% url 'signup' %}">SignUp</a></li>
+          <li class="nav-item"><a class="btn btn-outline-dark" href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

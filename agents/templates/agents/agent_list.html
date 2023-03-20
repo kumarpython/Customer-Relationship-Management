@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-light table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">City</th>
+          <th scope="col">Country</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+  <tbody class="table-group-divider">
+
+    {% for agent in agents %}
+        <tr>
+          <td>{{ agent.fname }}</td>
+          <td>{{ agent.lname }}</td>
+          <td>{{ agent.gender }}</td>
+          <td>{{ agent.email }}</td>
+          <td>{{ agent.age }} yrs</td>
+          <td>{{ agent.city }}</td>
+          <td>{{ agent.country }}</td>
+          <td><a href="{% url 'agents:agent-detail' agent.pk %}" class="btn btn-sm btn-outline-dark">Details</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

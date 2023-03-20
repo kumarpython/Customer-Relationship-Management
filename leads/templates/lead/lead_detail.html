@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="{{ lead.fname }} {{ lead.lname }}">
+  <div class="card-body">
+    <h5 class="card-title">Lead: {{ lead.fname }} {{ lead.lname }}</h5>
+    <p class="card-text">Gender: {{ lead.gender }}</p>
+    <p class="card-text">Created On: {{ lead.created }}</p>
+    <p class="card-text">Source: {{ lead.source }}</p>
+    <p class="card-text">Email: {{ lead.email }}</p>
+    <p class="card-text">Age: {{ lead.age }} yrs</p>
+    <p class="card-text">City: {{ lead.city }}</p>
+    <p class="card-text">Country: {{ lead.country }}</p>
+    <p class="card-text">Agent: {{ lead.agent }}</p>
+    <p class="card-text">Status: {{ lead.status }}</p>
+    <a href="{% url 'leads:lead-edit' lead.pk %}" class="btn btn-outline-dark">Edit</a>
+    <a href="{% url 'leads:lead-delete' lead.pk %}" class="btn btn-danger">Delete</a>
+  </div>
+</div>
+
+{% endblock content %}

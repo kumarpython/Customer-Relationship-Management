@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="{{ lead.fname }} {{ lead.lname }}">
+  <div class="card-body">
+    <h5 class="card-title">Agent: {{ agent.fname }} {{ agent.lname }}</h5>
+    <p class="card-text">Gender: {{ agent.gender }}</p>
+    <p class="card-text">Email: {{ agent.email }}</p>
+    <p class="card-text">Age: {{ agent.age }} yrs</p>
+    <p class="card-text">City: {{ agent.city }}</p>
+    <p class="card-text">Country: {{ agent.country }}</p>
+    <a href="{% url 'agents:agent-edit' agent.pk %}" class="btn btn-outline-dark">Edit</a>
+    <a href="{% url 'agents:agent-delete' agent.pk %}" class="btn btn-danger">Delete</a>
+  </div>
+</div>
+
+{% endblock content %}
